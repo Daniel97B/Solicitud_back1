@@ -13,7 +13,22 @@ const validacionCreateItem = [
     }
 ];
 
+const validacionEdición = [
+    check("id").exists().notEmpty(),
+    check("Estado").exists().notEmpty(),
+    (req,res,next)=>{
+        return validateResults(req,res,next)
+    }
+];
 
+const validacionAprobacion = [
+    check("id").exists().notEmpty(),
+    check("Estado").exists().notEmpty(),
+    check("Fecha_culminacion"),
+    (req,res,next)=>{
+        return validateResults(req,res,next)
+    }
+];
 const validaciongetoneItem = [
     check("id").exists().notEmpty(),
     (req,res,next)=>{
@@ -21,7 +36,24 @@ const validaciongetoneItem = [
     }
 ];
 
+const validaciongetPendiente = [
+    check("Asignado_a").exists().notEmpty(),
+    (req,res,next)=>{
+        return validateResults(req,res,next)
+    }
+];
+const validaciongetSolicitud = [
+    check("Solicitud").exists().notEmpty(),
+    (req,res,next)=>{
+        return validateResults(req,res,next)
+    }
+];
+
 module.exports = {
     validacionCreateItem,
-    validaciongetoneItem    
+    validaciongetoneItem,
+    validaciongetPendiente,
+    validaciongetSolicitud,
+    validacionAprobacion,
+    validacionEdición
 };

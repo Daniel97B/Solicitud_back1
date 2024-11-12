@@ -18,7 +18,9 @@ const tokenSing = async (user) => {
         });
     } catch (e) {
         console.log('Este es el error de el token:', e);
-        return null; // Devuelve null en caso de error
+        return res.status(500).json({
+            msg: "Contraseña incorrecta"
+        }); ; // Devuelve null en caso de error
     }
 };
 
@@ -28,7 +30,7 @@ const verifySing = async (token)=>{
    try {
         return  jwt.verify(token, JWT_SECRET)
    } catch (e) {
-    onsole.log('este es el error de el token' + e);
+    console.log('este es el error de el token' + e);
         
     return(null);
    }

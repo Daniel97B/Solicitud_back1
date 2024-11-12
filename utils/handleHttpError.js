@@ -1,6 +1,7 @@
-const handleHttpError = (res,mensaje="Algo sucedio", code = 403) =>{
+//? Helper Error Handler
+const handleHttpError = (res, message = "Something happened", code = 403) => {
     res.status(code);
-    res.send({error: mensaje});
-}
-
-module.exports = {handleHttpError};
+    res.send({ error: message });
+  };
+//! Export
+export { handleHttpError };

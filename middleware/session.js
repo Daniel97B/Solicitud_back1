@@ -1,5 +1,5 @@
 
-const { login } = require('../models');
+const  {user } = require('../models');
 const { verifySing } = require('../utils/handleJwt');
 const {handleHttpError} =require('../utils/handleHttpError');
 //*Creamos la funcion de validación para los persmisos de las rutas
@@ -12,22 +12,20 @@ const ingresoMiddleware = async(req, res, next)=>{
         };
         //!Esta guardando el token una variable, seleccionando la ultima parte.
         const token = req.headers.authorization.split (' ').pop();
-        console.log(token);
         
-        const dataToken = await verifySing(token);
-        console.log(dataToken);
-        
+        const dataToken = await verifySing(token);        
         if(!dataToken.id){
-            handleHttpError(res,"ERROR EN EL ID_TOKEN",401);
+            res.send(res,"ERROR EN EL ID_TOKEN",401);
+            res.send('token invalido')
             return
         }
-        const user = await login.findOne({where:{id: dataToken.id}});
-        req.User = user;
+        const User = await user.findOne({where:{id: dataToken.id}});
+        req.User = User;
         
         
         next(); 
     } catch (e) {
-        handleHttpError(res,'NO SESION',e)        
+        res.status(401).send('NO SESION');        
     }
 };
 

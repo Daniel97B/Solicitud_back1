@@ -19,7 +19,6 @@ const encrypt = async (passwordPlain) => {
 //?Por medio de esta funcion se realiza la comparacion de la contraseña encryptada y la que se guardo
 const compare = async(Passwordplain,Hashpassword)=>{
     return await bcryptjs.compare(Passwordplain,Hashpassword);
-    
 };
 
 

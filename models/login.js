@@ -2,8 +2,8 @@ const { DataTypes } = require("sequelize");
 const db = require('../database/db'); // Asegúrate de que la ruta sea correcta
 const sequelize = db.sequelize; // Cambia a sequelize
 
-const login = sequelize.define(
-    "login",
+const user = sequelize.define(
+    'user',
     {
         User: {
             type: DataTypes.STRING,
@@ -25,9 +25,8 @@ const login = sequelize.define(
         }
     },
     {
-        tableName: 'login',
-        timestamps: true, // Corrección aquí
+        timestamps: true,freezeTableName: true, // Corrección aquí
     }
 );
 
-module.exports = login;
+module.exports = user;

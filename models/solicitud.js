@@ -29,7 +29,7 @@ const solicitud = sequelize.define(
         },
     },
     {
-        tableName: 'solicitud',
+        freezeTableName:true,
         timestamps: true,
     }
 );
